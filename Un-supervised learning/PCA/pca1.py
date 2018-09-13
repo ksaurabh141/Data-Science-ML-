@@ -1,0 +1,44 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep 13 10:29:00 2018
+
+@author: Ankita
+"""
+import numpy as np
+from sklearn import decomposition  #PCA Package
+import pandas as pd
+
+#3 features with 5 records
+df1 = pd.DataFrame({'Age':[10,2,8,9,12],'Familysize':[20,5,17,20,22],
+        'Fare':[10,2,7,10,11]})  #Age, FamilySize, Fare... Are features
+
+pca = decomposition.PCA(n_components = 2) #n_components means, transform the data to n dimensions.
+#find eigen values and eigen vectors of covariance matrix of df1
+#.fit builds PCA model for given fetures to prinicpal components
+#Equation: 
+#PC1 = Age*w11+FamilySize*w12+Fare*1w13.....
+#PC2 = Age*w21+FamilySize*w22+Fare*w23.....
+#PC3 = Age*w31+FamilySize*w32+Fare*w33.....
+pca.fit(df1)
+df1_pca = pca.transform(df1)
+print(df1_pca)
+
+#variance of data along original axes
+np.var(df1.Age) + np.var(df1.Familysize) + np.var(df1.Fare)
+
+#variance of data along principal component axes
+#show eigen values of covariance matrix in decreasing order
+pca.explained_variance_
+np.sum(pca.explained_variance_)
+
+#understand how much variance captured by each principal component
+print(pca.explained_variance_)
+print(pca.explained_variance_ratio_)
+print(pca.explained_variance_ratio_.cumsum())
+
+#show the principal components
+#show eighen vectors of covariance matrix of df
+pca.components_[0]
+pca.components_[1]
+pca.components_[2] #It will throw error.
+

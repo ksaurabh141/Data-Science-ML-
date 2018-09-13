@@ -1,0 +1,11 @@
+explained_variance = res= 0.677 and sqrt = math domain error
+
+neg_mean_absolute_error= res= -27599 and sqrt = 166.12
+
+neg_mean_squared_error’= res= -2009203149 and sqrt = 44824
+
+neg_mean_squared_log_error= res = -0.04847957816323584 and sqrt = 0.22018078518171344
+
+neg_median_absolute_error= res = -17633 and sqrt = 132.7905619136139
+
+r2= 0.6763294625022097 and sqrt = math domain error
